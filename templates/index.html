@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',filename='style/style_index.css') }}">
+    <title>Document</title>
+</head>
+<body>
+    <div class="menu">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="/login">Login</a></li>
+            <!-- <li><a href="#">Training</a></li>
+            <li><a href="#">Team</a></li>
+            <li><a href="#">Contact</a></li> -->
+        </ul>
+    </div>
+    <section class="banner">
+        <header>
+            <h2 class="logo">Your Logo</h2>
+            <div class="toggle"><ion-icon name="menu-outline"></ion-icon></div>
+        </header>
+        <video src="/static/video/exchange.mp4" muted loop autoplay></video>
+        <div class="overlay"></div>
+        <div class="text">
+            <h2>stock</h2>
+            <h3>Exchange</h3>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Harum quisquam repellat quos delectus dignissimos, nulla neque nostrum, unde iste ab temporibus voluptatum, minima nobis! Error saepe et sunt in iure!</p>
+            <a href="#">Join us</a>
+        </div>
+        <div class="sci">
+            <li>
+                <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
+                <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
+                <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+            </li>
+        </div>
+    </section>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script>
+        const menuToggle = document.querySelector('.toggle');
+        const nuevo = document.querySelector('.menu ul')
+        let menu = false
+        function close(){
+            menu = true
+            menuToggle.classList.add('active')
+            menuToggle.innerHTML = '<ion-icon name="close-outline"></ion-icon>';
+            document.querySelector('.banner').classList.add('active')
+        }
+        function open(){
+            menu = false
+            menuToggle.classList.remove('active')
+            menuToggle.innerHTML = '<ion-icon name="menu-outline"></ion-icon>';
+            document.querySelector('.banner').classList.remove('active')
+        }
+        menuToggle.addEventListener('click',()=>(menu)?open():close())
+        nuevo.addEventListener('click',()=>(menu)?open():close())
+    </script>
+</body>
+</html>

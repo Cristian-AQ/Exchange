@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',filename='style/style_dashboard.css') }}">
+    <title>Document</title>
+</head>
+<body>
+        <!-- TradingView Widget BEGIN -->
+    <div class="tradingview-widget-container">
+        <div id="tradingview_09369"></div>
+        <div class="tradingview-widget-copyright"><a href="https://es.tradingview.com/symbols/BME-SAN/" rel="noopener" target="_blank"><span class="blue-text">SAN Gráfico</span></a> por TradingView</div>
+        <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+        <script type="text/javascript">
+        new TradingView.widget(
+        {
+        "width": 980,
+        "height": 610,
+        "symbol": "BME:SAN",
+        "interval": "D",
+        "timezone": "Etc/UTC",
+        "theme": "dark",
+        "style": "1",
+        "locale": "es",
+        "toolbar_bg": "#f1f3f6",
+        "enable_publishing": false,
+        "allow_symbol_change": true,
+        "container_id": "tradingview_09369"
+    }
+        );
+        </script>
+    </div>
+    <!-- TradingView Widget END -->
+</body>
+</html>
