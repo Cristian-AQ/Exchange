@@ -1,3 +1,4 @@
+from fileinput import close
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from config.config import DevelopmentConfig
@@ -8,6 +9,12 @@ from werkzeug.utils import redirect
 from werkzeug.security import generate_password_hash
 from werkzeug.security import check_password_hash
 import datetime
+
+import numpy as np
+import pickle
+from sklearn import svm
+from sklearn.ensemble import RandomForestClassifier
+import os
 
 app = Flask(__name__)
 app.config.from_object(DevelopmentConfig)
@@ -61,7 +68,6 @@ def login():
         user = User.query.filter_by(email=email).first()
         if user is not None and user.verify_password(password):
             session['email'] = email
-            # flash(f'Usuario {user.username} logeado correctamente')
             return redirect(url_for('dashboard'))
     return render_template('login.html')
 
@@ -83,10 +89,7 @@ def register():
             db.session.add(newUser)
             db.session.commit()
             session['email'] = email
-            # flash(f'usuario {email} creado')
             return redirect(url_for('dashboard'))
-        # else:
-        #     flash('El usuario ya existe')
     return render_template('login.html')
 
 @app.route('/static/video/<namevideo>')
@@ -95,6 +98,37 @@ def directory(namevideo):
 
 @app.route('/dashboard')
 def dashboard():
+    return render_template('dashboard.html')
+
+# MODEL_PATH = 'models/pickle_model.pkl'
+
+# Se recibe la imagen y el modelo, devuelve la predicción
+def model_prediction(x_in,position):
+    m = [f for f in os.listdir('models')]
+    with open('models/'+m[position], 'rb') as file:
+        model = pickle.load(file)
+    x = np.asarray(x_in).reshape(1,-1)
+    preds=model.predict(x)
+    return preds
+
+@app.route('/predict', methods=['POST','GET'])
+def predict():
+    if request.method == 'POST':
+        emp = request.form['business']
+        open = request.form['open']
+        high = request.form["high"]
+        low = request.form["low"]
+        close = request.form["close"]
+        print(emp)
+        x_in =[float(open),float(high),float(low),float(close)]
+        predictS = model_prediction(x_in,int(emp))
+        # mensaje ='EL CULTIVO RECOMENDADO ES: {}'.format(predictS[0]).upper()
+        if predictS[0] == -1:
+            flash(f'SEÑAL DE VENTA')
+        elif predictS[0] == 1:
+            flash(f'SEÑAL DE COMPRA')
+        else:
+            flash(f'PUEDE COMPRAR O VENDER')
     return render_template('dashboard.html')
 
 ### END ROUTE
