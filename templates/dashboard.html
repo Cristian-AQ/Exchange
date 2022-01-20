@@ -8,30 +8,66 @@
     <title>Document</title>
 </head>
 <body>
-        <!-- TradingView Widget BEGIN -->
-    <div class="tradingview-widget-container">
-        <div id="tradingview_09369"></div>
-        <div class="tradingview-widget-copyright"><a href="https://es.tradingview.com/symbols/BME-SAN/" rel="noopener" target="_blank"><span class="blue-text">SAN Gráfico</span></a> por TradingView</div>
-        <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-        <script type="text/javascript">
-        new TradingView.widget(
-        {
-        "width": 980,
-        "height": 610,
-        "symbol": "BME:SAN",
-        "interval": "D",
-        "timezone": "Etc/UTC",
-        "theme": "dark",
-        "style": "1",
-        "locale": "es",
-        "toolbar_bg": "#f1f3f6",
-        "enable_publishing": false,
-        "allow_symbol_change": true,
-        "container_id": "tradingview_09369"
-    }
-        );
-        </script>
+    <header>
+        <nav>
+            <ul class="nav_link">
+                <li><a href="#">Service</a></li>
+                <li><a href="#">Projects</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
+        <a href="/logout"><button>LOGOUT</button></a>
+    </header>
+    <div class="contenedor">
+        <div class="form">
+            <form action="/predict" method="post">
+                <select name="business" id="">
+                    <option selected>Seleccione una empresa</option>
+                    <option value="0">Microsoft</option>
+                    <option value="1">Google</option>
+                    <option value="2">Facebook</option>
+                    <option value="3">Apple</option>
+                    <option value="4">NAN</option>
+                    <option value="5">NAN</option>
+                    <option value="6">NAN</option>
+                </select>
+                <input type="text" name="open" placeholder="Open">
+                <input type="text" name="high" placeholder="High">
+                <input type="text" name="low" placeholder="Low">
+                <input type="text" name="close" placeholder="Close">
+                <input type="submit" value="Prediccion">
+            </form>
+            {% with messages = get_flashed_messages() %}  
+                {% if messages %}
+                    {% for mensaje in messages %}
+                        <h3>{{ mensaje }}</h3>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+        <div class="tradingview-widget-container">
+            <div id="tradingview_09369"></div>
+            <div class="tradingview-widget-copyright"><a href="https://es.tradingview.com/symbols/BME-SAN/" rel="noopener" target="_blank"><span class="blue-text">SAN Gráfico</span></a> por TradingView</div>
+            <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+            <script type="text/javascript">
+            new TradingView.widget(
+            {
+            "width": 980,
+            "height": 610,
+            "symbol": "BME:SAN",
+            "interval": "D",
+            "timezone": "Etc/UTC",
+            "theme": "dark",
+            "style": "1",
+            "locale": "es",
+            "toolbar_bg": "#f1f3f6",
+            "enable_publishing": false,
+            "allow_symbol_change": true,
+            "container_id": "tradingview_09369"
+        }
+            );
+            </script>
+        </div>
     </div>
-    <!-- TradingView Widget END -->
 </body>
 </html>

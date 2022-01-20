@@ -1,14 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat:wght@100;200&display=swap');
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
-
 body{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     background-color: #333;
     color: #fff;
+}
+li, a, button{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: #edf0f1;
+    text-decoration: none;
+}
+header{
+    display: flex;
+    background-color: #24252A;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10%;
+    width: 100%;
+    height: 50px;
+    margin-bottom: 20px;
+}
+.nav_link{
+    list-style: none;
+}
+.nav_link li{
+    display: inline-block;
+    padding: 0 20px;
+}
+.nav_link li a{
+    transition: all 0.3s ease;
+}
+.nav_link li a:hover{
+    color: #0088a9;
+}
+button{
+    padding: 9px 25px;
+    background-color: rgba(0, 136, 169, 1);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+button:hover{
+    background-color: rgba(0, 136, 169, 0.8);
+}
+
+.contenedor{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 5px 45px rgba(0, 0, 0, .25);
+}
+.contenedor .form{
+    width: 100%;
+    padding: 50px;
+}
+.contenedor .form form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.contenedor .form form p{
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+.contenedor .form form input,
+.contenedor .form form select{
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+    outline: none;
+    font-size: 16px;
+    border: 1px solid #333;
+}
+.form form input[type='submit']{
+    background-color: #03a9f4;
+    border: none;
+    color: white;
+    max-width: 100px;
+    cursor: pointer;
 }
