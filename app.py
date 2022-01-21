@@ -14,6 +14,7 @@ import numpy as np
 import pickle
 from sklearn import svm
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import LogisticRegression
 import os
 
 app = Flask(__name__)
@@ -123,7 +124,7 @@ def predict():
         x_in =[float(open),float(high),float(low),float(close)]
         predictS = model_prediction(x_in,int(emp))
         # mensaje ='EL CULTIVO RECOMENDADO ES: {}'.format(predictS[0]).upper()
-        if predictS[0] == -1:
+        if predictS[0] == 0:
             flash(f'SEÑAL DE VENTA')
         elif predictS[0] == 1:
             flash(f'SEÑAL DE COMPRA')
