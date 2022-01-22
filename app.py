@@ -129,7 +129,7 @@ def predict():
         elif predictS[0] == 1:
             flash(f'SEÑAL DE COMPRA')
         else:
-            flash(f'PUEDE COMPRAR O VENDER')
+            flash(f'{predictS[0]}')
     return render_template('dashboard.html')
 
 ### END ROUTE
