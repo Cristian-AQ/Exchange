@@ -87,3 +87,10 @@ button:hover{
     max-width: 100px;
     cursor: pointer;
 }
+
+.titulo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
