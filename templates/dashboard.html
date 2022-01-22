@@ -18,18 +18,19 @@
         </nav>
         <a href="/logout"><button>LOGOUT</button></a>
     </header>
+    <div class="titulo">
+        <h1>Sistema de prediccion de compra y venta de acciones</h1>
+    </div>
     <div class="contenedor">
         <div class="form">
             <form action="/predict" method="post">
                 <select name="business" id="">
                     <option selected>Seleccione una empresa</option>
                     <option value="0">Apple</option>
-                    <option value="1">Microsoft</option>
+                    <option value="1">Coca Cola</option>
                     <option value="2">Facebook</option>
-                    <option value="3">Google</option>
-                    <option value="4">NAN</option>
-                    <option value="5">NAN</option>
-                    <option value="6">NAN</option>
+                    <option value="3">Tesla</option>
+                    <option value="4">Microsoft</option>
                 </select>
                 <input type="text" name="open" placeholder="Open">
                 <input type="text" name="high" placeholder="High">
