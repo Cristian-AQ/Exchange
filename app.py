@@ -17,6 +17,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
 import os
 
+#####################
 app = Flask(__name__)
 app.config.from_object(DevelopmentConfig)
 db = SQLAlchemy(app)
@@ -120,7 +121,6 @@ def predict():
         high = request.form["high"]
         low = request.form["low"]
         close = request.form["close"]
-        print(emp)
         x_in =[float(open),float(high),float(low),float(close)]
         predictS = model_prediction(x_in,int(emp))
         # mensaje ='EL CULTIVO RECOMENDADO ES: {}'.format(predictS[0]).upper()
